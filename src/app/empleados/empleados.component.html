@@ -1,0 +1,58 @@
+
+<h1>EMPLEADOS</h1><hr>
+<h3>Selector de Colores: </h3>
+<input type="text" [(ngModel)]="SelectedColor"/>
+<pre 
+    [style.border]="SelectedColor == 'red' ? '5px solid black' : ' 1px solid green'" 
+    [ngClass]="{ fondoAzul:SelectedColor == 'blue', fondoVerde: SelectedColor == 'green'}" 
+  >
+   <strong>Color Elegido</strong>
+    {{SelectedColor}}
+</pre>
+<div [ngStyle]="{'background':SelectedColor, 'color': 'white', padding: '10px', 'height': '100px', 'width': '100px' , 'float': 'right'}"></div>
+<div style="clear:both"></div> 
+
+<h3>Colores Switch</h3>
+<ul [ngSwitch]="color">
+    <li *ngSwitchCase="'red'" [ngStyle]="{'background':color, 'color': 'white', padding: '10px'}">Es color Rojo</li>
+    <li *ngSwitchCase="'green'" [ngStyle]="{'background':color, 'color': 'white', padding: '10px'}">Es color Verde</li>
+    <li *ngSwitchCase="'blue'" [ngStyle]="{'background':color, 'color': 'white', padding: '10px'}">Es color Azul</li>
+</ul>
+<hr>
+<h2> {{nombre_componente}} </h2>
+<p> {{lista}} </p> 
+
+
+<p>Empleado Estrella: </p>
+<hr>
+<div *ngIf="trabajadorExterno == true">
+    <button (click)="cambiarTrabajador(false)" >Mostrar Trabajador</button> 
+    <ul > 
+        <li>{{trabajadores[0].nombre}}</li>
+        <li>{{trabajadores[0].edad}}</li>
+        <li *ngIf="trabajadores[0].activo == true">Esta Activo</li>
+        <li *ngIf="trabajadores[0].activo == false">Esta Inactivo</li>
+    </ul>
+</div> 
+<div *ngIf="trabajadorExterno == false">
+    <button (click)="cambiarTrabajador(true)" >Mostrar Empleado</button> 
+    <ul> 
+        <li>{{empleado.nombre}}</li>
+        <li>{{empleado.edad}}</li>
+        <li *ngIf="empleado.activo == true">Esta Activo</li>
+        <li *ngIf="empleado.activo == false">Esta Inactivo</li> 
+    </ul> 
+</div>
+
+<hr>
+<h3>Listado de Empleados </h3>
+<ul>
+    <li *ngFor=" let empleado of trabajadores; let i = index"> Empleado {{i + 1}}:
+        <ul>
+            <li>{{empleado.nombre}}</li>
+            <li>{{empleado.edad}}</li>
+            <li *ngIf="empleado.activo == true">Esta Activo</li>
+            <li *ngIf="empleado.activo == false">Esta Inactivo</li> 
+        </ul>
+    </li>
+</ul>

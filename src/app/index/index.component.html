@@ -1,0 +1,11 @@
+<h2>
+    {{titulo}}
+</h2>
+<hr>
+<input type="text" [(ngModel)]="prendaGuardar" /> <button (click)="guardarPrenda()" >Agregar Prenda</button>
+<p *ngIf="prendaGuardar">La Prenda a Guardar es: <strong>{{prendaGuardar}}</strong></p>
+<h3>Listado de Ropa:</h3>
+<ul>
+    <li *ngFor=" let prenda of ListadoRopa">{{prenda}} <button (click)="eliminarPrenda()">Eliminar</button></li>
+    
+</ul>
